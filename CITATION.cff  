@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+title: "Traffic Vision"
+version: "0.4.0"
+abstract: "Traffic Vision is a learning project that explores the intersection of emerging technologies (AI, autonomous vehicles) with existing infrastructure systems. Using GDOT traffic camera feeds as a primary data source, this framework documents methods, scripts, storage solutions, and ML methodologies across the technology stack. The intent is to produce high-quality documentation that enables researchers and citizen scientists to leverage publicly available digital infrastructure by abstracting away technical barriers to innovation and research. It provides reusable patterns and techniques that practitioners can adapt across scientific domains beyond traffic analysis alone."
+authors:
+ - family-names: "Trauco"
+   given-names: "Christopher"
+   orcid: "https://orcid.org/0009-0005-8113-6528"
+repository-code: "https://github.com/iTrauco/traffic-vision-v0.4"
+type: software
+date-released: 2025-06-13
+message: "If you use this software, please cite it as below."
