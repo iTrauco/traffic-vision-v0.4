@@ -10,7 +10,7 @@ dist/
 downloads/
 eggs/
 .eggs/
-!lib/
+# !lib/
 lib64/
 parts/
 sdist/
@@ -384,3 +384,12 @@ lib/
 # 🎯 REMEMBER: Every custom module needs TWO lines:
 #   1. !lib/module_name/     (tracks the folder)
 #   2. !lib/module_name/**   (tracks ALL files inside)
+
+
+# Python development files
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+build/
+dist/
