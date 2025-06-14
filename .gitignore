@@ -1,0 +1,386 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+!lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.python-version
+.pyenv
+pipenv-install
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+.ipynb_checkpoints/
+*.ipynb-meta
+*.nbconvert/
+.jupyter/
+jupyter_notebook_config.py
+
+# Data Science / ML
+*.csv
+*.tsv
+*.dat
+*.db
+*.sqlite
+*.sqlite3
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.npy
+*.npz
+*.feather
+*.parquet
+*.arrow
+*.msgpack
+*.mat
+*.sav
+*.zsav
+*.dta
+*.xpt
+*.sas7bdat
+
+# Large files and datasets
+data/raw/
+data/processed/
+data/interim/
+data/external/
+datasets/
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+*.bz2
+*.gz
+*.tgz
+
+# Model files
+models/
+*.model
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.pb
+*.tflite
+*.caffemodel
+*.h5
+*.hdf5
+*.joblib
+*.sav
+*.bin
+*.vec
+*.safetensors
+saved_models/
+checkpoints/
+weights/
+
+# TensorFlow
+*.tfrecord
+*.tfevent
+*.tfevents
+logs/
+tensorboard/
+.tensorboard/
+tf_logs/
+
+# PyTorch
+*.pth.tar
+runs/
+.torch/
+
+# Machine Learning Frameworks
+mlruns/
+outputs/
+.azureml/
+.aim/
+wandb/
+.neptune/
+.comet.ml/
+.guild/
+
+# Cloud and GCP
+.gcp/
+.google/
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+service-account-key.json
+service-account-*.json
+gcp-key.json
+gcp-credentials.json
+credentials.json
+client_secret*.json
+.gcloudignore
+app.yaml
+.firebase/
+firebase-debug.log
+firestore-debug.log
+firestore.rules
+firestore.indexes.json
+.firebaserc
+
+# Google Cloud Storage
+.gsutil/
+gcs-key.json
+
+# BigQuery
+.bigquery/
+*.bq
+
+# Vertex AI / AI Platform
+.vertex/
+.aiplatform/
+
+# IDE and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+.classpath
+*.sublime-project
+*.sublime-workspace
+.spyderproject
+.spyproject
+.ropeproject
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+cython_debug/
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+*.lnk
+
+# Documentation
+docs/_build/
+docs/.doctrees/
+site/
+.mkdocs/
+
+# Testing
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+htmlcov/
+.mutmut-cache
+
+# Secrets and Configuration
+.env
+.env.*
+!.env.example
+!.env.template
+secrets/
+config/local/
+*.key
+*.pem
+*.p12
+.secrets/
+credentials/
+
+# Logs
+*.log
+logs/
+*.out
+*.err
+log/
+
+# Temporary files
+tmp/
+temp/
+.tmp/
+.temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+~$*
+
+# Package managers
+node_modules/
+bower_components/
+yarn-error.log
+npm-debug.log
+package-lock.json
+yarn.lock
+
+# R
+.Rhistory
+.Rdata
+.Rproj.user/
+*.Rproj
+
+# MATLAB
+*.asv
+*.m~
+
+# SAS
+*.sas7bcat
+
+# SPSS
+*.sps
+
+# Spark
+spark-warehouse/
+metastore_db/
+derby.log
+
+# Dask
+dask-worker-space/
+
+# Ray
+ray_results/
+.ray/
+
+# DVC
+.dvc/
+.dvcignore
+
+# MLflow
+mlflow.db
+
+# Streamlit
+.streamlit/
+
+# Gradio
+flagged/
+
+# FastAPI
+__pycache__/
+instance/
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Terraform (for infrastructure)
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+
+# Airflow
+airflow.db
+airflow-webserver.pid
+logs/
+plugins/
+airflow.cfg
+
+# Prefect
+.prefect/
+
+# Kubernetes
+*.kubeconfig
+.kube/
+
+# AWS (if using multi-cloud)
+.aws/
+.boto
+
+# Azure (if using multi-cloud)
+.azure/
+local.settings.json
+
+# Scratch files
+scratch/
+sandbox/
+playground/
+experiments/
+.experiments/
+
+
+
+# 🚫 LIBRARY MANAGEMENT SECTION 🚫
+# ===================================
+# This section handles which libraries get tracked vs ignored
+
+# 📚 Ignore ALL lib directories by default
+# (This prevents accidentally tracking third-party libs, downloaded packages, etc.)
+lib/
+
+# ✅ CUSTOM DEVELOPMENT LIBRARIES - ALWAYS TRACK THESE! ✅
+# 🔥 These are OUR libraries that we're actively developing
+# 🚨 IMPORTANT: These must be tracked in git for the project to work!
+
+# 🤖 MLOps Library - Machine Learning Operations
+# Contains: video processing, frame extraction, traffic analysis
+!lib/mlops/
+!lib/mlops/**
+
+# 📓 Notebook Tools Library - Jupyter Development Utilities  
+# Contains: TOC generator, export widgets, notebook cleaners
+!lib/notebook_tools/
+!lib/notebook_tools/**
+
+# 🆕 FUTURE MODULES GO HERE 🆕
+# ==============================
+# 📝 TEMPLATE: When you create a new module, copy these two lines:
+# !lib/YOUR_NEW_MODULE_NAME/
+# !lib/YOUR_NEW_MODULE_NAME/**
+#
+# 💡 EXAMPLES of what you might add later:
+# !lib/data_utils/          # 📊 Data processing utilities
+# !lib/data_utils/**
+# !lib/model_training/      # 🧠 Model training pipelines  
+# !lib/model_training/**
+# !lib/visualization/       # 📈 Plotting and visualization tools
+# !lib/visualization/**
+# !lib/deployment/          # 🚀 Model deployment utilities
+# !lib/deployment/**
+
+# 🎯 REMEMBER: Every custom module needs TWO lines:
+#   1. !lib/module_name/     (tracks the folder)
+#   2. !lib/module_name/**   (tracks ALL files inside)
