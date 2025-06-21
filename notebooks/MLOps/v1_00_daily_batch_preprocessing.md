@@ -29,6 +29,10 @@ right_side = widgets.VBox([toc.output, export.output])
 display(widgets.HBox([left_side, right_side]))
 ```
 
+
+    HBox(children=(VBox(children=(Button(button_style='primary', description='Generate TOC', icon='list', style=Bu…
+
+
 <!-- TOC -->
 # Table of Contents
 
@@ -121,6 +125,11 @@ print(f"✓ Python version: {sys.version.split()[0]}")
 print(f"✓ Working directory: {os.getcwd()}")
 ```
 
+    ✓ OpenCV version: 4.11.0
+    ✓ Python version: 3.12.9
+    ✓ Working directory: /home/trauco/v3-traffic-vision/notebooks/MLOps
+
+
 ## 📐 Batch Processing Configuration
 
 Defines core parameters for the daily batch preprocessing workflow.
@@ -180,6 +189,14 @@ print(f"  Input: {CONFIG['INPUT_DIR']}")
 print(f"  Output: {CONFIG['OUTPUT_DIR']}")
 ```
 
+    Batch Processing Configuration:
+      Target Date: 20250620
+      Target Time: 120000 (12:00:00)
+      Frames per video: 10
+      Input: /home/trauco/traffic-recordings
+      Output: ../../data/preprocessing/batch_analysis/2025-06-20
+
+
 ## 💾 Initialize Checkpoint System
 
 Sets up checkpoint functionality to track processing progress and enable recovery from interruptions.
@@ -234,6 +251,10 @@ if checkpoint.get('process_date') != CONFIG['PROCESS_DATE']:
 print(f"✓ Checkpoint system ready")
 ```
 
+    ✓ Loaded checkpoint: 60 videos already processed
+    ✓ Checkpoint system ready
+
+
 ## 📂 Scan Video Directories
 
 Enumerates camera subdirectories and counts videos from the target date.
@@ -273,6 +294,44 @@ total_videos = sum(video_counts.values())
 print(f"\nTotal videos available: {total_videos}")
 print(f"Cameras with recordings: {sum(1 for v in video_counts.values() if v > 0)}/{len(camera_dirs)}")
 ```
+
+    Found 31 camera directories
+    
+    ✓ ATL-0006: 86 videos
+    ✓ ATL-0027: 86 videos
+    ✓ ATL-0069: 73 videos
+    ✓ ATL-0080: 86 videos
+    ✓ ATL-0150: 86 videos
+    ✓ ATL-0540: 86 videos
+    ✓ ATL-0610: 86 videos
+    ✓ ATL-0612: 86 videos
+    ✓ ATL-0613: 86 videos
+    ✓ ATL-0907: 86 videos
+    ✓ ATL-0917: 86 videos
+    ✓ ATL-0922: 86 videos
+    ⚠️  ATL-0943: No 2025-06-20 directory
+    ✓ ATL-0946: 86 videos
+    ✓ ATL-0947: 86 videos
+    ✓ ATL-0948: 86 videos
+    ✓ ATL-0952: 86 videos
+    ✓ ATL-0972: 87 videos
+    ✓ ATL-0973: 86 videos
+    ✓ ATL-0980: 77 videos
+    ✓ ATL-0981: 86 videos
+    ✓ ATL-0987: 86 videos
+    ✓ ATL-0992: 86 videos
+    ✓ ATL-0996: 86 videos
+    ✓ ATL-0997: 86 videos
+    ✓ ATL-0998: 86 videos
+    ✓ ATL-0999: 86 videos
+    ✓ ATL-1000: 86 videos
+    ✓ ATL-1001: 86 videos
+    ✓ ATL-1005: 86 videos
+    ✓ ATL-1031: 86 videos
+    
+    Total videos available: 2559
+    Cameras with recordings: 30/31
+
 
 ## 🎯 Find Target Videos
 
@@ -372,6 +431,221 @@ for cam_dir in camera_dirs:
 print(f"Total videos selected: {len(target_videos)}")
 ```
 
+    Finding videos closest to 12:00 (noon)...
+    
+    ATL-0006:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 14.7 fps
+      Duration: 921.7s (15.4 min)
+      File size: 13.2 MB
+    
+    ATL-0027:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 14.9 fps
+      Duration: 910.0s (15.2 min)
+      File size: 13.6 MB
+    
+    ATL-0069:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 14.6 fps
+      Duration: 922.8s (15.4 min)
+      File size: 15.2 MB
+    
+    ATL-0080:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 15.0 fps
+      Duration: 905.3s (15.1 min)
+      File size: 12.0 MB
+    
+    ATL-0150:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 15.0 fps
+      Duration: 901.1s (15.0 min)
+      File size: 12.1 MB
+    
+    ATL-0540:
+      Video starts: 12:06:41
+      Resolution: 800x450
+      Frame rate: 14.1 fps
+      Duration: 900.0s (15.0 min)
+      File size: 21.6 MB
+    
+    ATL-0610:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 15.0 fps
+      Duration: 901.1s (15.0 min)
+      File size: 12.8 MB
+    
+    ATL-0612:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 15.0 fps
+      Duration: 901.1s (15.0 min)
+      File size: 12.2 MB
+    
+    ATL-0613:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 15.0 fps
+      Duration: 901.1s (15.0 min)
+      File size: 10.4 MB
+    
+    ATL-0907:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 14.6 fps
+      Duration: 926.5s (15.4 min)
+      File size: 13.2 MB
+    
+    ATL-0917:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 14.7 fps
+      Duration: 921.7s (15.4 min)
+      File size: 14.6 MB
+    
+    ATL-0922:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 14.7 fps
+      Duration: 918.1s (15.3 min)
+      File size: 14.2 MB
+    
+    ATL-0946:
+      Video starts: 12:06:41
+      Resolution: 800x450
+      Frame rate: 15.0 fps
+      Duration: 903.1s (15.1 min)
+      File size: 31.9 MB
+    
+    ATL-0947:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 15.0 fps
+      Duration: 901.1s (15.0 min)
+      File size: 9.8 MB
+    
+    ATL-0948:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 15.0 fps
+      Duration: 903.1s (15.1 min)
+      File size: 14.2 MB
+    
+    ATL-0952:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 15.0 fps
+      Duration: 901.1s (15.0 min)
+      File size: 10.7 MB
+    
+    ATL-0972:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 14.6 fps
+      Duration: 926.4s (15.4 min)
+      File size: 10.8 MB
+    
+    ATL-0973:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 15.0 fps
+      Duration: 905.6s (15.1 min)
+      File size: 13.0 MB
+    
+    ATL-0980:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 15.0 fps
+      Duration: 181.9s (3.0 min)
+      File size: 3.0 MB
+    
+    ATL-0981:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 15.0 fps
+      Duration: 906.2s (15.1 min)
+      File size: 12.2 MB
+    
+    ATL-0987:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 14.7 fps
+      Duration: 926.0s (15.4 min)
+      File size: 10.0 MB
+    
+    ATL-0992:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 14.8 fps
+      Duration: 910.1s (15.2 min)
+      File size: 13.9 MB
+    
+    ATL-0996:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 15.0 fps
+      Duration: 902.0s (15.0 min)
+      File size: 10.0 MB
+    
+    ATL-0997:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 15.0 fps
+      Duration: 901.1s (15.0 min)
+      File size: 11.6 MB
+    
+    ATL-0998:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 14.7 fps
+      Duration: 917.8s (15.3 min)
+      File size: 11.8 MB
+    
+    ATL-0999:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 14.7 fps
+      Duration: 917.6s (15.3 min)
+      File size: 14.3 MB
+    
+    ATL-1000:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 15.0 fps
+      Duration: 905.2s (15.1 min)
+      File size: 9.9 MB
+    
+    ATL-1001:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 14.5 fps
+      Duration: 936.9s (15.6 min)
+      File size: 12.4 MB
+    
+    ATL-1005:
+      Video starts: 12:06:41
+      Resolution: 480x270
+      Frame rate: 15.0 fps
+      Duration: 901.1s (15.0 min)
+      File size: 11.2 MB
+    
+    ATL-1031:
+      Video starts: 12:06:41
+      Resolution: 320x240
+      Frame rate: 14.8 fps
+      Duration: 914.4s (15.2 min)
+      File size: 29.6 MB
+    
+    Total videos selected: 30
+
+
 ## 💾 Save Video Manifest
 
 Creates manifest files in the batch analysis directory with selected video metadata for tracking and downstream processing.
@@ -428,6 +702,15 @@ print(f"  Total size: {df_manifest['file_size_mb'].sum():.1f} MB")
 print(f"  Average duration: {df_manifest['duration_seconds'].mean()/60:.1f} minutes")
 ```
 
+    ✓ Saved manifest: ../../data/preprocessing/batch_analysis/2025-06-20/manifest_20250620.json
+    ✓ Saved CSV: ../../data/preprocessing/batch_analysis/2025-06-20/manifest_20250620.csv
+    
+    Summary:
+      Videos selected: 30
+      Total size: 405.5 MB
+      Average duration: 14.8 minutes
+
+
 ## 🎬 Preview Extraction Configuration
 
 Sets parameters for extracting sample frames from each video for quality assessment.
@@ -461,6 +744,13 @@ print(f"  Duration to sample: {PREVIEW_CONFIG['extraction_duration']}s")
 print(f"  Output directory: {PREVIEW_CONFIG['preview_dir']}")
 print(f"  Videos to preview: {PREVIEW_CONFIG['max_videos_to_preview']} of {len(target_videos)}")
 ```
+
+    Preview Configuration:
+      Frames per video: 5
+      Duration to sample: 60s
+      Output directory: ../../data/preprocessing/batch_analysis/2025-06-20/preview_frames
+      Videos to preview: 30 of 30
+
 
 ## 🎥 Extract Preview Frames
 
@@ -560,6 +850,41 @@ for i, video_info in enumerate(target_videos[:PREVIEW_CONFIG['max_videos_to_prev
 print(f"\nCompleted: {len(preview_results)} of {PREVIEW_CONFIG['max_videos_to_preview']} videos")
 ```
 
+    Extracting preview frames...
+    ✓ ATL-0006: 5 frames, brightness=116.4, blur=4092.0
+    ✓ ATL-0027: 5 frames, brightness=124.5, blur=3493.0
+    ✓ ATL-0069: 5 frames, brightness=115.4, blur=4718.6
+    ✓ ATL-0080: 5 frames, brightness=113.4, blur=5021.3
+    ✓ ATL-0150: 5 frames, brightness=103.8, blur=5401.4
+    ✓ ATL-0540: 5 frames, brightness=115.0, blur=2963.4
+    ✓ ATL-0610: 5 frames, brightness=111.7, blur=5857.0
+    ✓ ATL-0612: 5 frames, brightness=106.3, blur=4991.9
+    ✓ ATL-0613: 5 frames, brightness=117.0, blur=4324.6
+    ✓ ATL-0907: 5 frames, brightness=108.8, blur=4953.0
+    ✓ ATL-0917: 5 frames, brightness=112.0, blur=2463.3
+    ✓ ATL-0922: 5 frames, brightness=119.8, blur=3311.2
+    ✓ ATL-0946: 5 frames, brightness=96.4, blur=2580.7
+    ✓ ATL-0947: 5 frames, brightness=111.3, blur=2299.7
+    ✓ ATL-0948: 5 frames, brightness=103.0, blur=5357.7
+    ✓ ATL-0952: 5 frames, brightness=103.9, blur=4127.9
+    ✓ ATL-0972: 5 frames, brightness=114.1, blur=2950.2
+    ✓ ATL-0973: 5 frames, brightness=108.6, blur=3507.0
+    ✓ ATL-0980: 5 frames, brightness=113.2, blur=4820.1
+    ✓ ATL-0981: 5 frames, brightness=106.4, blur=4041.8
+    ✓ ATL-0987: 5 frames, brightness=125.7, blur=4377.5
+    ✓ ATL-0992: 5 frames, brightness=109.5, blur=3878.7
+    ✓ ATL-0996: 5 frames, brightness=106.3, blur=6005.7
+    ✓ ATL-0997: 5 frames, brightness=97.7, blur=4050.1
+    ✓ ATL-0998: 5 frames, brightness=99.6, blur=3057.1
+    ✓ ATL-0999: 5 frames, brightness=111.1, blur=3648.6
+    ✓ ATL-1000: 5 frames, brightness=109.7, blur=4785.4
+    ✓ ATL-1001: 5 frames, brightness=103.6, blur=3622.4
+    ✓ ATL-1005: 5 frames, brightness=102.5, blur=3498.4
+    ✓ ATL-1031: 5 frames, brightness=137.8, blur=8632.6
+    
+    Completed: 30 of 30 videos
+
+
 ## 📊 Display Frame Previews
 
 Generates visual grid of extracted frames with quality metrics for review.
@@ -611,6 +936,18 @@ print(f"\nQuality Summary ({len(preview_results)} cameras):")
 print(f"  Brightness: {df_preview['brightness'].min():.1f} - {df_preview['brightness'].max():.1f}")
 print(f"  Blur score: {df_preview['blur_score'].min():.1f} - {df_preview['blur_score'].max():.1f}")
 ```
+
+
+    
+![png](v1_00_daily_batch_preprocessing_files/v1_00_daily_batch_preprocessing_20_0.png)
+    
+
+
+    
+    Quality Summary (30 cameras):
+      Brightness: 96.4 - 137.8
+      Blur score: 2299.7 - 8632.6
+
 
 ## 📈 Quality Analysis & Recommendations
 
@@ -710,6 +1047,44 @@ plt.grid(True, alpha=0.3)
 plt.show()
 ```
 
+    Quality Analysis:
+      Brightness quartiles: Q1=104.5, Q3=114.7
+      Blur score quartiles: Q1=3494.4, Q3=4919.8
+      Top 10% blur threshold: 5447.0
+    
+    Highest quality cameras (3):
+      ATL-0610
+      ATL-0996
+      ATL-1031
+    
+    Cameras needing review (19):
+      ATL-0006: high brightness
+      ATL-0027: high brightness, high blur
+      ATL-0069: high brightness
+      ATL-0150: low brightness
+      ATL-0540: high brightness, high blur
+      ATL-0613: high brightness
+      ATL-0917: high blur
+      ATL-0922: high brightness, high blur
+      ATL-0946: low brightness, high blur
+      ATL-0947: high blur
+      ATL-0948: low brightness
+      ATL-0952: low brightness
+      ATL-0972: high blur
+      ATL-0987: high brightness
+      ATL-0997: low brightness
+      ATL-0998: low brightness, high blur
+      ATL-1001: low brightness
+      ATL-1005: low brightness
+      ATL-1031: high brightness
+
+
+
+    
+![png](v1_00_daily_batch_preprocessing_files/v1_00_daily_batch_preprocessing_22_1.png)
+    
+
+
 
 ```python
 # quality samples visualization
@@ -763,6 +1138,12 @@ plt.tight_layout()
 plt.show()
 ```
 
+
+    
+![png](v1_00_daily_batch_preprocessing_files/v1_00_daily_batch_preprocessing_23_0.png)
+    
+
+
 ## 📚 Quality Metrics Reference
 
 ### Brightness (Luminance)
@@ -800,6 +1181,9 @@ selected_cameras = ['ATL-1005', 'ATL-0972', 'ATL-0610', 'ATL-0973']
 print(f"Manually selected {len(selected_cameras)} cameras")
 ```
 
+    Manually selected 4 cameras
+
+
 ## 💾 Save Selection Queue
 
 Save the selected cameras to a queue file for the individual preprocessing notebook.
@@ -821,6 +1205,10 @@ with open(selection_file, 'w') as f:
 print(f"✓ Saved {len(selected_cameras)} cameras to queue")
 print(f"  File: {selection_file}")
 ```
+
+    ✓ Saved 4 cameras to queue
+      File: ../../data/preprocessing/batch_analysis/2025-06-20/individual_queue_20250620.json
+
 
 ## 📋 Batch Processing Summary
 
@@ -856,6 +1244,33 @@ print(f"  3. Load: {selection_file.name}")
 print(f"\nCompleted: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 ```
 
+    ============================================================
+    BATCH PROCESSING SUMMARY - 20250620
+    ============================================================
+    
+    📊 Processing Statistics:
+      Total cameras: 31
+      Videos found: 30
+      Videos previewed: 30
+      Frames extracted: 150
+    
+    📈 Quality Overview:
+      Avg brightness: 110.8
+      Avg blur score: 4228
+      Videos flagged: 19
+      High quality: 3
+    
+    📁 Output Location:
+      ../../data/preprocessing/batch_analysis/2025-06-20/
+    
+    ✅ Next Steps:
+      1. Review quality samples above
+      2. Run individual preprocessing notebook
+      3. Load: individual_queue_20250620.json
+    
+    Completed: 2025-06-21 10:34:58
+
+
 ## 🎯 Final Video Selection
 
 Review and finalize which videos to process. This creates the configuration file for the individual preprocessing notebook.
@@ -889,4 +1304,31 @@ with open(config_file, 'w') as f:
 
 print(f"\n✓ Saved preprocessing config: {config_file}")
 print(f"  Videos marked for processing: {len(selected_cameras)}")
+```
+
+    Current selection:
+      1. ATL-1005
+      2. ATL-0972
+      3. ATL-0610
+      4. ATL-0973
+    
+    Total: 4 cameras
+    
+    ✓ Saved preprocessing config: ../../data/preprocessing/batch_analysis/2025-06-20/preprocessing_config.json
+      Videos marked for processing: 4
+
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+
+```python
+
 ```
