@@ -1,0 +1,11 @@
+{
+  "batch_date": "20250620",
+  "selected_cameras": [
+    "ATL-1005",
+    "ATL-0972",
+    "ATL-0610",
+    "ATL-0973"
+  ],
+  "selection_criteria": "quality_based",
+  "created_at": "2025-06-21T14:04:26.121016"
+}
