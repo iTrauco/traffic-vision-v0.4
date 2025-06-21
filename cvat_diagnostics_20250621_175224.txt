@@ -1,0 +1,437 @@
+CVAT Diagnostics Report - Sat Jun 21 05:52:24 PM EDT 2025
+============================================
+1. CHECKING CONTAINER STATUS (Most Likely Issue)
+---------------------------------------------------
+no configuration file provided: not found
+
+2. CHECKING PORT CONFLICTS
+----------------------------
+Port 8081 usage:
+COMMAND       PID USER   FD   TYPE   DEVICE SIZE/OFF NODE NAME
+docker-pr 1293024 root    7u  IPv4 12338937      0t0  TCP *:tproxy (LISTEN)
+docker-pr 1293031 root    7u  IPv6 12338938      0t0  TCP *:tproxy (LISTEN)
+Port 8080 usage:
+COMMAND  PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+nginx   3986     root    5u  IPv4  11825      0t0  TCP *:http-alt (LISTEN)
+nginx   3987 www-data    5u  IPv4  11825      0t0  TCP *:http-alt (LISTEN)
+nginx   3988 www-data    5u  IPv4  11825      0t0  TCP *:http-alt (LISTEN)
+nginx   3989 www-data    5u  IPv4  11825      0t0  TCP *:http-alt (LISTEN)
+nginx   3990 www-data    5u  IPv4  11825      0t0  TCP *:http-alt (LISTEN)
+nginx   3991 www-data    5u  IPv4  11825      0t0  TCP *:http-alt (LISTEN)
+nginx   3992 www-data    5u  IPv4  11825      0t0  TCP *:http-alt (LISTEN)
+nginx   3993 www-data    5u  IPv4  11825      0t0  TCP *:http-alt (LISTEN)
+nginx   3994 www-data    5u  IPv4  11825      0t0  TCP *:http-alt (LISTEN)
+nginx   3995 www-data    5u  IPv4  11825      0t0  TCP *:http-alt (LISTEN)
+nginx   3996 www-data    5u  IPv4  11825      0t0  TCP *:http-alt (LISTEN)
+nginx   3997 www-data    5u  IPv4  11825      0t0  TCP *:http-alt (LISTEN)
+nginx   3998 www-data    5u  IPv4  11825      0t0  TCP *:http-alt (LISTEN)
+nginx   3999 www-data    5u  IPv4  11825      0t0  TCP *:http-alt (LISTEN)
+nginx   4000 www-data    5u  IPv4  11825      0t0  TCP *:http-alt (LISTEN)
+nginx   4002 www-data    5u  IPv4  11825      0t0  TCP *:http-alt (LISTEN)
+nginx   4004 www-data    5u  IPv4  11825      0t0  TCP *:http-alt (LISTEN)
+nginx   4006 www-data    5u  IPv4  11825      0t0  TCP *:http-alt (LISTEN)
+nginx   4008 www-data    5u  IPv4  11825      0t0  TCP *:http-alt (LISTEN)
+nginx   4009 www-data    5u  IPv4  11825      0t0  TCP *:http-alt (LISTEN)
+nginx   4010 www-data    5u  IPv4  11825      0t0  TCP *:http-alt (LISTEN)
+
+3. CHECKING CONTAINER LOGS
+---------------------------
+CVAT Server logs (last 20 lines):
+no configuration file provided: not found
+
+Database logs (last 10 lines):
+no configuration file provided: not found
+
+4. CHECKING NETWORK CONNECTIVITY
+---------------------------------
+Docker networks:
+NETWORK ID     NAME        DRIVER    SCOPE
+76be5dba6182   bridge      bridge    local
+95ce1a8a7251   cvat_cvat   bridge    local
+2a91b0db7041   host        host      local
+fb96f641fee5   none        null      local
+
+CVAT network inspect:
+[]
+Error response from daemon: network cvat_default not found
+
+5. CHECKING SYSTEM RESOURCES
+-----------------------------
+Memory usage:
+               total        used        free      shared  buff/cache   available
+Mem:            30Gi        13Gi       3.9Gi       317Mi        13Gi        17Gi
+Swap:          8.0Gi        58Mi       7.9Gi
+
+Disk usage:
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           3.1G  4.2M  3.1G   1% /run
+/dev/nvme0n1p2  937G  353G  538G  40% /
+tmpfs            16G  268M   16G   2% /dev/shm
+tmpfs           5.0M   36K  5.0M   1% /run/lock
+efivarfs        512K  129K  379K  26% /sys/firmware/efi/efivars
+/dev/nvme0n1p1  1.1G  6.2M  1.1G   1% /boot/efi
+tmpfs           3.1G  180K  3.1G   1% /run/user/1000
+
+6. CHECKING DOCKER DAEMON
+--------------------------
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; preset: enabled)
+     Active: active (running) since Sat 2025-06-21 17:41:32 EDT; 10min ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 1244975 (dockerd)
+      Tasks: 63
+     Memory: 3.3G (peak: 3.6G)
+        CPU: 1min 10.543s
+     CGroup: /system.slice/docker.service
+             ├─1244975 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+             ├─1293024 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8081 -container-ip 172.18.0.17 -container-port 8080 -use-listen-fd
+             ├─1293031 /usr/bin/docker-proxy -proto tcp -host-ip :: -host-port 8081 -container-ip 172.18.0.17 -container-port 8080 -use-listen-fd
+             ├─1293038 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8090 -container-ip 172.18.0.17 -container-port 8090 -use-listen-fd
+             └─1293047 /usr/bin/docker-proxy -proto tcp -host-ip :: -host-port 8090 -container-ip 172.18.0.17 -container-port 8090 -use-listen-fd
+
+Jun 21 17:48:19 thinkstation-p5 dockerd[1244975]: time="2025-06-21T17:48:19.340462592-04:00" level=info msg="No non-localhost DNS nameservers are left in resolv.conf. Using default external servers"
+Jun 21 17:48:19 thinkstation-p5 dockerd[1244975]: time="2025-06-21T17:48:19.408786869-04:00" level=info msg="ignoring event" container=745b2d9e5ad08faa5e23e3bef8c5d418972cf4a942ae63eaf25cec30e1943fab module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jun 21 17:49:19 thinkstation-p5 dockerd[1244975]: time="2025-06-21T17:49:19.513863068-04:00" level=info msg="No non-localhost DNS nameservers are left in resolv.conf. Using default external servers"
+Jun 21 17:49:19 thinkstation-p5 dockerd[1244975]: time="2025-06-21T17:49:19.582833144-04:00" level=info msg="ignoring event" container=745b2d9e5ad08faa5e23e3bef8c5d418972cf4a942ae63eaf25cec30e1943fab module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jun 21 17:50:19 thinkstation-p5 dockerd[1244975]: time="2025-06-21T17:50:19.688979533-04:00" level=info msg="No non-localhost DNS nameservers are left in resolv.conf. Using default external servers"
+Jun 21 17:50:19 thinkstation-p5 dockerd[1244975]: time="2025-06-21T17:50:19.759124746-04:00" level=info msg="ignoring event" container=745b2d9e5ad08faa5e23e3bef8c5d418972cf4a942ae63eaf25cec30e1943fab module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jun 21 17:51:19 thinkstation-p5 dockerd[1244975]: time="2025-06-21T17:51:19.871310082-04:00" level=info msg="No non-localhost DNS nameservers are left in resolv.conf. Using default external servers"
+Jun 21 17:51:19 thinkstation-p5 dockerd[1244975]: time="2025-06-21T17:51:19.936867840-04:00" level=info msg="ignoring event" container=745b2d9e5ad08faa5e23e3bef8c5d418972cf4a942ae63eaf25cec30e1943fab module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jun 21 17:52:20 thinkstation-p5 dockerd[1244975]: time="2025-06-21T17:52:20.041437508-04:00" level=info msg="No non-localhost DNS nameservers are left in resolv.conf. Using default external servers"
+Jun 21 17:52:20 thinkstation-p5 dockerd[1244975]: time="2025-06-21T17:52:20.111428592-04:00" level=info msg="ignoring event" container=745b2d9e5ad08faa5e23e3bef8c5d418972cf4a942ae63eaf25cec30e1943fab module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+
+7. DETAILED CONTAINER INSPECTION (Least Likely)
+------------------------------------------------
+CVAT Server container details:
+[
+    {
+        "Id": "be6014d0d116260f7ce226077a93e575505dbe7aa7aeb1aa9cd799ab0ed9d872",
+        "Created": "2025-06-21T21:42:11.037511329Z",
+        "Path": "./backend_entrypoint.sh",
+        "Args": [
+            "init",
+            "run",
+            "server"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 1253613,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2025-06-21T21:42:11.240212262Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:9beadbdf6bd37c76ad50f249a1f7280ed46dd31486078d8085fe4f6ba2ca06bf",
+        "ResolvConfPath": "/var/lib/docker/containers/be6014d0d116260f7ce226077a93e575505dbe7aa7aeb1aa9cd799ab0ed9d872/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/be6014d0d116260f7ce226077a93e575505dbe7aa7aeb1aa9cd799ab0ed9d872/hostname",
+        "HostsPath": "/var/lib/docker/containers/be6014d0d116260f7ce226077a93e575505dbe7aa7aeb1aa9cd799ab0ed9d872/hosts",
+        "LogPath": "/var/lib/docker/containers/be6014d0d116260f7ce226077a93e575505dbe7aa7aeb1aa9cd799ab0ed9d872/be6014d0d116260f7ce226077a93e575505dbe7aa7aeb1aa9cd799ab0ed9d872-json.log",
+        "Name": "/cvat_server",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "cvat_cvat_data:/home/django/data:rw",
+                "cvat_cvat_keys:/home/django/keys:rw",
+                "cvat_cvat_logs:/home/django/logs:rw"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "cvat_cvat",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "always",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap",
+                "/sys/devices/system/cpu/cpu0/thermal_throttle",
+                "/sys/devices/system/cpu/cpu1/thermal_throttle",
+                "/sys/devices/system/cpu/cpu2/thermal_throttle",
+                "/sys/devices/system/cpu/cpu3/thermal_throttle",
+                "/sys/devices/system/cpu/cpu4/thermal_throttle",
+                "/sys/devices/system/cpu/cpu5/thermal_throttle",
+                "/sys/devices/system/cpu/cpu6/thermal_throttle",
+                "/sys/devices/system/cpu/cpu7/thermal_throttle",
+                "/sys/devices/system/cpu/cpu8/thermal_throttle",
+                "/sys/devices/system/cpu/cpu9/thermal_throttle",
+                "/sys/devices/system/cpu/cpu10/thermal_throttle",
+                "/sys/devices/system/cpu/cpu11/thermal_throttle",
+                "/sys/devices/system/cpu/cpu12/thermal_throttle",
+                "/sys/devices/system/cpu/cpu13/thermal_throttle",
+                "/sys/devices/system/cpu/cpu14/thermal_throttle",
+                "/sys/devices/system/cpu/cpu15/thermal_throttle",
+                "/sys/devices/system/cpu/cpu16/thermal_throttle",
+                "/sys/devices/system/cpu/cpu17/thermal_throttle",
+                "/sys/devices/system/cpu/cpu18/thermal_throttle",
+                "/sys/devices/system/cpu/cpu19/thermal_throttle"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "ID": "be6014d0d116260f7ce226077a93e575505dbe7aa7aeb1aa9cd799ab0ed9d872",
+                "LowerDir": "/var/lib/docker/overlay2/b5a0c86a5cc3a5b5d0b05be4d3cda4f0f96eb1ed61e4de8484b06642d9d5b73d-init/diff:/var/lib/docker/overlay2/d0f1abad1788b4e6325c18574e1f0f6f2b5865a20620f66d58508dbe725dffcf/diff:/var/lib/docker/overlay2/056bf0d3301892f3398de6ee12d9b84c73dcab66a42f8f8cdc4c6239c79220eb/diff:/var/lib/docker/overlay2/2cd3011e71b0dffc16bd9d294b03f22bce414aa913f38f777d1390cd1de05958/diff:/var/lib/docker/overlay2/0e712dcb14ae0fbb6c221a622e550ce49ed627e9b84219cdf9ccefcc29d1332c/diff:/var/lib/docker/overlay2/13bd814837c27d410cbba25823ec0d16a41ec1a8d93e28e63ad8967def7ea7a1/diff:/var/lib/docker/overlay2/12a16c96cf876b3c90b39a9937e1b3f4d88ad85e3dcfe5b480204613158f7736/diff:/var/lib/docker/overlay2/d6104adb7323a4aae2f2c9497b0b557a53ddae520554787b5649ab15a860c411/diff:/var/lib/docker/overlay2/ede9a84e62e41c61b62e7032bcfd173b110791b5c4c5f80c301f23fc92e8a1a4/diff:/var/lib/docker/overlay2/e24e2e3a5772245d406fe1533739958477b7efeba3c796822297344e0d83235f/diff:/var/lib/docker/overlay2/58c4f992d145938065a73afb5cce513e7c3077fd8f1ddf6c86ca3ab570673f4f/diff:/var/lib/docker/overlay2/21492dae4eba6d76fe9db78f55cc04f69d3f4a0cd64d9a3d9d84f05908059628/diff:/var/lib/docker/overlay2/e65d889c9d40c6a7606a013db6cdd7abe223bfd25c5d3928e94d6b242e476688/diff:/var/lib/docker/overlay2/da57c7422fc24517555474e305d19c99579d84a5cd5b3568da37fcc77a5ab685/diff:/var/lib/docker/overlay2/b39eab727e6bf5c8d5176d0e6427105600559bfff208ccaa35076abcb55749b8/diff:/var/lib/docker/overlay2/6796bcd63969bfb816a21e28035205dd464bdc020fb6f548c0810cd8737bae3c/diff:/var/lib/docker/overlay2/9cdbfe2f8764e4b1108a7c5089b6d5f9fc91eca0728f9f8ac3ef5ace183961f2/diff:/var/lib/docker/overlay2/bb750bc55458d54d98ff267dcfbe0fb84dc68ddbdfe289abca6e8d13364fddc0/diff:/var/lib/docker/overlay2/e8fa62a5414096fa97cd601c1f09397053e372df9bd515ccf2e7b3042eb4e67a/diff:/var/lib/docker/overlay2/3cfd69e0e321dbcf1130397ed21f3e22c38eeac380f87f3341d1b36eb371dc0e/diff:/var/lib/docker/overlay2/e8d50c25d8e504c992357d9335662633ff408be38f046f62c2f57d9bfa395c7d/diff:/var/lib/docker/overlay2/ebb68a6badf04d833f44266f877fa47e18459e129cfa9da98f70da2f2c7c8495/diff",
+                "MergedDir": "/var/lib/docker/overlay2/b5a0c86a5cc3a5b5d0b05be4d3cda4f0f96eb1ed61e4de8484b06642d9d5b73d/merged",
+                "UpperDir": "/var/lib/docker/overlay2/b5a0c86a5cc3a5b5d0b05be4d3cda4f0f96eb1ed61e4de8484b06642d9d5b73d/diff",
+                "WorkDir": "/var/lib/docker/overlay2/b5a0c86a5cc3a5b5d0b05be4d3cda4f0f96eb1ed61e4de8484b06642d9d5b73d/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "cvat_cvat_data",
+                "Source": "/var/lib/docker/volumes/cvat_cvat_data/_data",
+                "Destination": "/home/django/data",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            },
+            {
+                "Type": "volume",
+                "Name": "cvat_cvat_keys",
+                "Source": "/var/lib/docker/volumes/cvat_cvat_keys/_data",
+                "Destination": "/home/django/keys",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            },
+            {
+                "Type": "volume",
+                "Name": "cvat_cvat_logs",
+                "Source": "/var/lib/docker/volumes/cvat_cvat_logs/_data",
+                "Destination": "/home/django/logs",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "be6014d0d116",
+            "Domainname": "",
+            "User": "django",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "8080/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "CVAT_POSTGRES_HOST=cvat_db",
+                "CLICKHOUSE_DB=cvat",
+                "SMOKESCREEN_OPTS=",
+                "ADAPTIVE_AUTO_ANNOTATION=false",
+                "DJANGO_LOG_SERVER_HOST=vector",
+                "DJANGO_MODWSGI_EXTRA_ARGS=",
+                "CLICKHOUSE_HOST=clickhouse",
+                "CVAT_ANALYTICS=1",
+                "CLICKHOUSE_PASSWORD=user",
+                "ALLOWED_HOSTS=*",
+                "CLICKHOUSE_PORT=8123",
+                "CVAT_BASE_URL",
+                "CLICKHOUSE_USER=user",
+                "CVAT_REDIS_ONDISK_PORT=6666",
+                "CVAT_REDIS_INMEM_PORT=6379",
+                "CVAT_LOG_IMPORT_ERRORS=true",
+                "DJANGO_LOG_SERVER_PORT=80",
+                "CVAT_REDIS_INMEM_HOST=cvat_redis_inmem",
+                "ONE_RUNNING_JOB_IN_QUEUE_PER_USER",
+                "no_proxy=clickhouse,grafana,vector,nuclio,opa,",
+                "CVAT_REDIS_ONDISK_HOST=cvat_redis_ondisk",
+                "NUMPROCS=2",
+                "CVAT_ALLOW_STATIC_CACHE=no",
+                "PATH=/opt/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "TERM=xterm",
+                "http_proxy=",
+                "https_proxy=",
+                "socks_proxy=",
+                "LANG=C.UTF-8",
+                "LC_ALL=C.UTF-8",
+                "TZ=Etc/UTC",
+                "DJANGO_SETTINGS_MODULE=cvat.settings.production",
+                "USER=django",
+                "HOME=/home/django"
+            ],
+            "Cmd": [
+                "init",
+                "run",
+                "server"
+            ],
+            "Image": "cvat/server:dev",
+            "Volumes": null,
+            "WorkingDir": "/home/django",
+            "Entrypoint": [
+                "./backend_entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "com.docker.compose.config-hash": "14503831170b08c3bd793e39ae144bcf178372c6c22bbe84226f9c204829b824",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "cvat_redis_ondisk:service_started:false,cvat_db:service_started:false,cvat_opa:service_started:false,cvat_redis_inmem:service_started:false",
+                "com.docker.compose.image": "sha256:9beadbdf6bd37c76ad50f249a1f7280ed46dd31486078d8085fe4f6ba2ca06bf",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "cvat",
+                "com.docker.compose.project.config_files": "/home/trauco/cvat/docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/home/trauco/cvat",
+                "com.docker.compose.service": "cvat_server",
+                "com.docker.compose.version": "2.36.2",
+                "org.opencontainers.image.ref.name": "ubuntu",
+                "org.opencontainers.image.version": "22.04",
+                "traefik.enable": "true",
+                "traefik.http.routers.cvat.entrypoints": "web",
+                "traefik.http.routers.cvat.rule": "Host(`localhost`) && (PathPrefix(`/api/`) || PathPrefix(`/static/`) || PathPrefix(`/admin`) || PathPrefix(`/django-rq`))",
+                "traefik.http.services.cvat.loadbalancer.server.port": "8080"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "c336c54a900bbfdfd828124ea75b9a1ee3acfa3d2ace432bbb80d08a0cc0d4e5",
+            "SandboxKey": "/var/run/docker/netns/c336c54a900b",
+            "Ports": {
+                "8080/tcp": null
+            },
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "cvat_cvat": {
+                    "IPAMConfig": {},
+                    "Links": null,
+                    "Aliases": [
+                        "cvat_server",
+                        "cvat_server",
+                        "cvat-server"
+                    ],
+                    "MacAddress": "12:9a:67:d9:17:70",
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "95ce1a8a72513c955aaf486c28aa1c0dea36f8ffe1b61f9f62274514d87d0039",
+                    "EndpointID": "e15517d98ea6418dd8be128d8b0a7aee800ac7506b45cf635e722dcd95982466",
+                    "Gateway": "172.18.0.1",
+                    "IPAddress": "172.18.0.12",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "cvat_server",
+                        "cvat-server",
+                        "be6014d0d116"
+                    ]
+                }
+            }
+        }
+    }
+]
+
+8. COMPOSE FILE VALIDATION
+---------------------------
+no configuration file provided: not found
+
+Diagnostics complete. Check cvat_diagnostics_20250621_175224.txt for results.
