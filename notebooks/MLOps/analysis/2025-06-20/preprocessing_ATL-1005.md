@@ -128,7 +128,6 @@ This section will automatically generate a table of contents for your research n
     - [Observations](#observations)
     - [Notes](#notes)
 - [⏱️ Temporal Downsampling](#⏱️-temporal-downsampling)
-  - [ORIGINAL EXEC CODE BELOW](#original-exec-code-below)
   - [⚠️ Conditional Motion Detection](#⚠️-conditional-motion-detection)
   - [📊 Analysis & Observations](#📊-analysis-&-observations)
     - [Results](#results)
@@ -255,6 +254,11 @@ print(f"  Processing: {CONFIG['VIDEO_ID']} from {date_formatted}")
 print(f"  Output to: {CONFIG['OUTPUT_DIR']}")
 ```
 
+    Configuration loaded:
+      Processing: ATL-1005 from 2025-06-20
+      Output to: ../../../../data/preprocessing/individual_analysis/2025-06-20/ATL-1005
+
+
 ### Environment Initialization
 
 The preprocessing configuration parameters defined above will now be used to initialize the environment, import required libraries, and set up helper functions for video processing.
@@ -322,6 +326,16 @@ print(f"✓ Preferred codec '{CONFIG['PREFERRED_CODEC']}' fourcc: {fourcc_test}"
 print(f"\n✓ Environment setup complete")
 print(f"  Output directory created: {CONFIG['OUTPUT_DIR']}")
 ```
+
+    ✓ OpenCV version: 4.11.0
+    ✓ Python version: 3.12.9
+    ✓ NumPy version: 2.2.4
+    ✓ Pandas version: 2.2.3
+    ✓ Preferred codec 'mp4v' fourcc: 1983148141
+    
+    ✓ Environment setup complete
+      Output directory created: ../../../../data/preprocessing/individual_analysis/2025-06-20/ATL-1005
+
 
 ### 📊 Analysis & Observations
 
@@ -418,6 +432,9 @@ checkpoint = load_checkpoint()
 print(f"Ready to process videos. Checkpoint system initialized.")
 ```
 
+    Ready to process videos. Checkpoint system initialized.
+
+
 ### 📊 Analysis & ObservationS
 
 **Record your findings from the code execution above:**
@@ -480,6 +497,10 @@ time_str = closest_video.stem.split('_')[2]
 print(f"Selected: {closest_video.name}")
 print(f"  Starts at: {time_str[:2]}:{time_str[2:4]}:{time_str[4:6]}")
 ```
+
+    Selected: ATL-1005_20250620_120641.mp4
+      Starts at: 12:06:41
+
 
 ### 📊 Analysis & Observations
 
@@ -556,6 +577,18 @@ CONFIG['frames_extracted'] = frames_extracted
 
 print(f"\n✓ Extracted {frames_extracted} frames to {frames_dir}")
 ```
+
+    Frame Extraction
+    Extracting 300 frames (every 15 frames)
+      Extracted 50/300 frames
+      Extracted 100/300 frames
+      Extracted 150/300 frames
+      Extracted 200/300 frames
+      Extracted 250/300 frames
+      Extracted 300/300 frames
+    
+    ✓ Extracted 300 frames to ../../../../data/preprocessing/individual_analysis/2025-06-20/ATL-1005/frames
+
 
 ### 📊 Analysis & Observations
 
@@ -709,6 +742,41 @@ if poor_frames:
         print(f"  {frame.name}: {', '.join(reasons)}")
 ```
 
+    Image Quality Control
+    ============================================================
+    Checking quality of 300 frames
+    
+    Quality Metrics Explained:
+    - Brightness: Average pixel intensity (0-255)
+      Calculated as: mean(grayscale_image)
+    - Blur Score: Laplacian variance (higher = sharper)
+      Calculated as: variance(Laplacian(grayscale_image))
+    
+    Thresholds from batch analysis:
+    - Brightness must be: 104.5 - 114.8
+    - Blur score must be: ≥ 3494.3
+
+
+
+    
+![png](preprocessing_ATL-1005_files/preprocessing_ATL-1005_26_1.png)
+    
+
+
+    
+    Results:
+      Good frames: 56 (meet all thresholds)
+      Poor frames: 244 (fail one or more thresholds)
+      Pass rate: 18.7%
+    
+    Failure reasons (first 5):
+      frame_0000.jpg: too dark (102)
+      frame_0001.jpg: too dark (103)
+      frame_0002.jpg: too dark (102)
+      frame_0003.jpg: too dark (103)
+      frame_0004.jpg: too dark (103)
+
+
 ### 📊 Analysis & Observations
 **Record your findings from the code execution above:**
 
@@ -772,6 +840,12 @@ for frame_path in frames_to_transform:
 CONFIG['transformed_frames'] = transformed_frames
 print(f"\n✓ Completed spatial transformations for {CONFIG['VIDEO_ID']}")
 ```
+
+    Spatial Transformations
+    Transforming 56 frames from video: ATL-1005_20250620_120641.mp4
+    
+    ✓ Completed spatial transformations for ATL-1005
+
 
 
 ```python
@@ -838,6 +912,33 @@ print(f"\n✓ Transformation complete")
 print(f"  Frames processed: {len(transformed_frames)}")
 print(f"  Output location: {transformed_dir}")
 ```
+
+    Spatial Transformations
+    ============================================================
+    Processing 56 frames from: ATL-1005_20250620_120641.mp4
+    
+    What Spatial Transformations do:
+    - Check frame dimensions against max allowed size
+    - Resize if needed while maintaining aspect ratio
+    - Apply consistent output format and quality
+    - In this case: 480p videos are below max dimensions, so no resize needed
+    
+    Frame dimensions: 480x270
+    Target max: 1920x1080
+    Action: No resize needed (within limits)
+
+
+
+    
+![png](preprocessing_ATL-1005_files/preprocessing_ATL-1005_31_1.png)
+    
+
+
+    
+    ✓ Transformation complete
+      Frames processed: 56
+      Output location: ../../../../data/preprocessing/individual_analysis/2025-06-20/ATL-1005/transformed
+
 
 ### 📊 Analysis & Observations
 **Record your findings from the code execution above:**
@@ -966,6 +1067,44 @@ print(f"\n✓ Color normalization complete")
 print(f"  Frames processed: {len(normalized_frames)}")
 print(f"  Output: {normalized_dir}")
 ```
+
+    Color Space Normalization
+    ============================================================
+    Normalizing 56 frames
+    
+    Technical Details:
+    - OpenCV uses BGR (Blue-Green-Red) channel order by default
+    - This is legacy from early Windows bitmap format
+    - Most display systems and ML frameworks expect RGB order
+    - BGR: pixel[0]=Blue, pixel[1]=Green, pixel[2]=Red
+    - RGB: pixel[0]=Red, pixel[1]=Green, pixel[2]=Blue
+    
+    Why this matters:
+    - Displaying BGR image as RGB swaps red and blue channels
+    - Traffic lights would appear blue instead of red!
+    - ML models trained on RGB data would see wrong colors
+    
+    First frame shape: (270, 480, 3)
+    Data type: uint8
+    Value range: 0-255 (8-bit per channel)
+
+
+
+    
+![png](preprocessing_ATL-1005_files/preprocessing_ATL-1005_35_1.png)
+    
+
+
+    
+    Conversion formula:
+      RGB[0] = BGR[2]  (Red ← Blue position)
+      RGB[1] = BGR[1]  (Green stays same)
+      RGB[2] = BGR[0]  (Blue ← Red position)
+    
+    ✓ Color normalization complete
+      Frames processed: 56
+      Output: ../../../../data/preprocessing/individual_analysis/2025-06-20/ATL-1005/normalized
+
 
 ### 📊 Analysis & Observations
 
@@ -1146,6 +1285,68 @@ print(f"- Focuses ML training on relevant traffic patterns")
 print(f"- Saves storage and processing time")
 ```
 
+    Temporal Downsampling
+    ============================================================
+    Analyzing 56 frames for motion
+    
+    Motion Detection Method:
+    - Compare consecutive frames pixel-by-pixel
+    - Calculate absolute difference at each pixel location
+    - Average all pixel differences to get motion score
+    - Higher score = more pixels changed = likely vehicle movement
+    
+    Technical Process:
+    1. Convert frames to grayscale (simplifies comparison)
+    2. cv2.absdiff(frame1, frame2) computes |frame1 - frame2|
+    3. For each pixel: if value changed from 100 to 120, difference = 20
+    4. Motion score = average of all pixel differences
+    
+    Heatmap Visualization Explained:
+    - Black areas: No change between frames (static background)
+    - Red/Orange areas: Pixel changes (moving vehicles)
+    - Brighter colors = larger pixel value changes
+    - Each bright spot represents a moving object
+    
+
+
+
+    
+![png](preprocessing_ATL-1005_files/preprocessing_ATL-1005_40_1.png)
+    
+
+
+    
+    Motion Score Interpretation:
+    - Score 0-2: Camera noise/compression artifacts
+    - Score 2-5: Minor changes (shadows, small movements)
+    - Score 5-10: Vehicle movement detected
+    - Score >10: Multiple vehicles or fast movement
+    
+    Threshold Selection:
+    - Threshold: > 5.0 (empirically chosen for traffic)
+    - Too low: Keeps frames with just noise
+    - Too high: Misses slow-moving vehicles
+    
+    Results:
+    Original frames: 56
+    Frames with motion: 25
+    Reduction: 55.4%
+
+
+
+    
+![png](preprocessing_ATL-1005_files/preprocessing_ATL-1005_40_3.png)
+    
+
+
+    
+    Why This Matters for Traffic Analysis:
+    - Reduces dataset to frames with actual vehicles
+    - Eliminates redundant empty road frames
+    - Focuses ML training on relevant traffic patterns
+    - Saves storage and processing time
+
+
 ### 📊 Analysis & Observations
 
 **Record your findings from the code execution above:**
@@ -1247,6 +1448,22 @@ CONFIG['inventory'] = inventory_df
 print(f"\n✓ Data organization complete")
 ```
 
+    Data Organization
+    ============================================================
+    
+    Organized data structure:
+      ../../../../data/preprocessing/individual_analysis/2025-06-20/ATL-1005/
+      ├── frames/          (300 raw frames)
+      ├── transformed/     (56 frames)
+      ├── normalized/      (56 frames)
+      ├── downsampled/     (25 frames)
+      ├── metadata.json
+      ├── frame_inventory.csv
+      └── quality_report.csv
+    
+    ✓ Data organization complete
+
+
 ### 📊 Analysis & Observations
 
 **Record your findings from the code execution above:**
@@ -1306,6 +1523,17 @@ print(f"Location: {CONFIG['OUTPUT_DIR'] / 'downsampled'}")
 print(f"\nProcessing reduction: {CONFIG['frames_extracted']} → {len(CONFIG['downsampled_frames'])} frames")
 print(f"Data saved: {summary_path}")
 ```
+
+    Export & Storage Summary
+    ============================================================
+    Preprocessing Complete for ATL-1005
+    
+    Frames ready for annotation: 25
+    Location: ../../../../data/preprocessing/individual_analysis/2025-06-20/ATL-1005/downsampled
+    
+    Processing reduction: 300 → 25 frames
+    Data saved: ../../../../data/preprocessing/individual_analysis/2025-06-20/ATL-1005/preprocessing_summary.json
+
 
 ### 📊 Analysis & Observations
 
