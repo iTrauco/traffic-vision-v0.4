@@ -394,3 +394,19 @@ experiments/
 # !lib/visualization/**
 # !lib/deployment/
 # !lib/deployment/**
+
+
+__pycache__/
+*.py[cod]
+
+
+
+# ===================================
+# 🎯 INCLUDE ONLY BATCH_ANALYSIS DATA FILES
+# ===================================
+*.csv
+*.json
+
+# ✅ Allow .csv and .json files only in data/preprocessing/batch_analysis and its subdirs
+!data/preprocessing/batch_analysis/**/*.csv
+!data/preprocessing/batch_analysis/**/*.json
